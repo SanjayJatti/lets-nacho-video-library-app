@@ -5,6 +5,7 @@
     width: 100%;
     z-index: 5;
     background-color: var(--white);
+    height: 7vh;
 }
 .nav-social-media{
     margin-right: 2rem;
