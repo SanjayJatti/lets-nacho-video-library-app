@@ -1,29 +1,40 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 
 const DataContext = createContext();
 
-const DataProvider = ({children}) => {
-    const [ videos, setVideos ] = useState([]);
-    useEffect(()=>{
-        const getVideos = async()=>{
-            try{
-                const response = await axios.get("/api/videos");
-                setVideos(response.data.videos);
-            }
-            catch(error){
-                console.log(error)
-            }
-        }
-        getVideos()
-    }, [])
-    return(
-       <DataContext.Provider value={{videos, setVideos}}>
-           {children}
-       </DataContext.Provider>
-    )
-}
+const DataProvider = ({ children }) => {
+  const [videos, setVideos] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-const useData = ()=>useContext(DataContext);
+  useEffect(() => {
+    const getVideos = async () => {
+      try {
+        const response = await axios.get("/api/videos");
+        setVideos(response.data.videos);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getVideos();
 
-export { DataProvider, useData } 
+    const getCategories = async () => {
+      try {
+        const response = await axios.get("/api/categories");
+        setCategories(response.data.categories);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCategories();
+  }, []);
+  return (
+    <DataContext.Provider value={{ videos, setVideos, categories }}>
+      {children}
+    </DataContext.Provider>
+  );
+};
+
+const useData = () => useContext(DataContext);
+
+export { DataProvider, useData };
