@@ -15,3 +15,10 @@
 i{
     font-size: inherit;
 }
+.sidebar-link{
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: inherit;
+    display: flex;
+    flex-direction: column
+}
