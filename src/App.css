@@ -3,3 +3,7 @@
  html{
     font-family: 'Montserrat', sans-serif;
  }
+ .page-container{
+    width: 100%;
+    overflow: hidden;
+ }

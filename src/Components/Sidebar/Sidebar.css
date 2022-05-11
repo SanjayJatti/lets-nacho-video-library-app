@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 14vh;
-  width: 11vw;
+  min-width: 10vw;
 }
 .sidebar-list-wrapper {
   display: flex;
