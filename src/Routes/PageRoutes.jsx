@@ -1,14 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Login } from "../Pages/Authentication/Login.jsx";
-import { Signup } from "../Pages/Authentication/Signup.jsx";
-import { Home, Playlist, History, WatchLater, LikedVideos} from "../Pages/index.js"
+import { Home, Playlist, History, WatchLater, LikedVideos, SingleVideoPage, Login, Signup} from "../Pages/index.js"
 
 const PageRoutes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/:id" element={<SingleVideoPage/>}/>
         <Route path="/playlist" element={<Playlist/>}/>
         <Route path="/history" element={<History/>}/>
         <Route path="/watchlater" element={<WatchLater/>}/>

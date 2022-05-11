@@ -1,0 +1,37 @@
+.single-video-page {
+  position: relative;
+  top: 11vh;
+  left: 10vw;
+  padding: 1rem 2rem;
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+.video-player-container {
+  flex-basis: 64%;
+}
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 36%;
+  gap: 1rem;
+}
+.react-player-container {
+  margin-bottom: 1rem;
+  aspect-ratio: 16/9;
+}
+
+.video-footer {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--light-secondary-color);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+.video-footer h4 {
+  cursor: pointer;
+}
+.video-footer h4 i {
+  font-size: inherit;
+  margin-right: 0.5rem;
+}

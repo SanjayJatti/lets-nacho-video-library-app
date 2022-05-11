@@ -1,0 +1,20 @@
+.Horizontal-card{
+    display: flex;
+    gap:1rem;
+    width: 27rem;
+    cursor: pointer;
+}
+.Horizontal-card-img{
+    object-fit: cover;
+    width: 60%;
+    aspect-ratio: 16/9;
+}
+.video-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.footer-actions i{
+    cursor: pointer;
+}
