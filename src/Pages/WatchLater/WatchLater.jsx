@@ -29,7 +29,7 @@ const WatchLater = () => {
             .reverse()
             .map((video) => <HorizontalCard key={video._id} video={video} />)
         ) : (
-          <h3>There is no video to watch later</h3>
+          <h3>Add videos to watch them later</h3>
         )}
       </div>
     </div>
