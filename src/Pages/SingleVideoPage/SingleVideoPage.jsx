@@ -12,6 +12,10 @@ import {
 import { useAuth } from "../../Contexts/AuthContext";
 import { useActions } from "../../Contexts/ActionsContext";
 import { addToHistory } from "../../Services/HistoryServices";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+} from "../../Services/WatchLaterServices";
 
 const SingleVideoPage = () => {
   const { id } = useParams();
@@ -23,7 +27,7 @@ const SingleVideoPage = () => {
   const { token } = authState;
 
   const { actionsState, actionsDispatch } = useActions();
-  const { likesData } = actionsState;
+  const { likesData, watchLaterData } = actionsState;
   useEffect(() => {
     (async () => {
       try {
@@ -74,10 +78,31 @@ const SingleVideoPage = () => {
                   <i className="far fa-heart"></i>Like
                 </h4>
               )}
-
-              <h4>
-                <i className="far fa-clock"></i>Watch Later
-              </h4>
+              {watchLaterData.find(
+                (watchLaterVideo) => watchLaterVideo._id === id
+              ) ? (
+                <h4
+                  onClick={() =>
+                    removeFromWatchLater(
+                      currentVideo._id,
+                      token,
+                      actionsDispatch
+                    )
+                  }
+                >
+                  <i className="fas fa-clock"></i>
+                  Remove
+                </h4>
+              ) : (
+                <h4
+                  onClick={() =>
+                    addToWatchLater(currentVideo, token, actionsDispatch)
+                  }
+                >
+                  <i className="far fa-clock"></i>
+                  Watch Later
+                </h4>
+              )}
               <h4>
                 <i className="far fa-plus-square"></i>Add to Playlist
               </h4>

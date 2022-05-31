@@ -1,16 +1,20 @@
 import "./VideoCard.css";
 import { useNavigate } from "react-router-dom";
 import { useActions } from "../../Contexts/ActionsContext";
-import { addToLikedVideo, removeFromLikedVideo } from "../../Services/LikeVideoServices";
+import {
+  addToLikedVideo,
+  removeFromLikedVideo,
+} from "../../Services/LikeVideoServices";
 import { useAuth } from "../../Contexts/AuthContext";
+import { addToWatchLater, removeFromWatchLater } from "../../Services/WatchLaterServices";
 
 const VideoCard = ({ video }) => {
   const { _id, title, channel } = video;
   const navigate = useNavigate();
   const { actionsState, actionsDispatch } = useActions();
-  const { likesData } = actionsState;
+  const { likesData, watchLaterData } = actionsState;
   const { authState } = useAuth();
-  const { token } = authState
+  const { token } = authState;
   return (
     <div className="video-card">
       <div onClick={() => navigate(`/${_id}`)}>
@@ -40,7 +44,21 @@ const VideoCard = ({ video }) => {
               onClick={() => addToLikedVideo(video, token, actionsDispatch)}
             ></i>
           )}
-          <i className="far fa-clock"></i>
+          {watchLaterData.find(
+            (watchLaterVideo) => watchLaterVideo._id === _id
+          ) ? (
+            <i
+              className="fas fa-clock"
+              onClick={() =>
+                removeFromWatchLater(video._id, token, actionsDispatch)
+              }
+            ></i>
+          ) : (
+            <i
+              className="far fa-clock"
+              onClick={() => addToWatchLater(video, token, actionsDispatch)}
+            ></i>
+          )}
           <i className="far fa-plus-square"></i>
         </div>
       </div>

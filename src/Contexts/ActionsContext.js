@@ -6,12 +6,13 @@ import { useAuth } from "./AuthContext";
 
 const actionsContext = createContext();
 
-function ActionsProvider({ children }){
-   const { authState } = useAuth();
-   const { token } = authState
+function ActionsProvider({ children }) {
+  const { authState } = useAuth();
+  const { token } = authState;
   const initialActionsState = {
     likesData: [],
     historyData: [],
+    watchLaterData: [],
     error: "",
   };
   const [actionsState, actionsDispatch] = useReducer(
@@ -20,16 +21,16 @@ function ActionsProvider({ children }){
   );
   useEffect(() => {
     if (token) {
-        getLikedVideos(actionsDispatch, token);
-        getHistory(actionsDispatch, token)
+      getLikedVideos(actionsDispatch, token);
+      getHistory(actionsDispatch, token);
     }
-}, [token]);
+  }, [token]);
   return (
     <actionsContext.Provider value={{ actionsState, actionsDispatch }}>
       {children}
     </actionsContext.Provider>
   );
-};
+}
 
 const useActions = () => useContext(actionsContext);
 
