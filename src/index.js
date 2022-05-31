@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { ActionsProvider } from "./Contexts/ActionsContext";
 import { AuthProvider } from "./Contexts/AuthContext";
 import { DataProvider } from "./Contexts/DataContext";
 import { FilterProvider } from "./Contexts/FilterContext";
@@ -16,7 +17,9 @@ ReactDOM.render(
       <AuthProvider>
         <DataProvider>
           <FilterProvider>
-            <App />
+            <ActionsProvider>
+              <App />
+            </ActionsProvider>
           </FilterProvider>
         </DataProvider>
       </AuthProvider>

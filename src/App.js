@@ -8,8 +8,10 @@ const App = () => {
     <>
       <div className="page-container">
         <Header />
-        <Sidebar />
-        <PageRoutes />
+        <div className="core-page">
+          <Sidebar />
+          <PageRoutes />
+        </div>
       </div>
     </>
   );

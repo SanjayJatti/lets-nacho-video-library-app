@@ -2,12 +2,21 @@
     display: flex;
     gap:1rem;
     width: 27rem;
+    position: relative;
+}
+.delete-btn{
+    position: absolute;
+    top:0.2rem;
+    right: 0.2rem;
+    font-size: 1.6rem;
+    border-radius: 50%;
     cursor: pointer;
 }
 .Horizontal-card-img{
     object-fit: cover;
     width: 60%;
     aspect-ratio: 16/9;
+    cursor: pointer;
 }
 .video-info{
     display: flex;
