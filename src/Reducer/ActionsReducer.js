@@ -1,4 +1,4 @@
-import { LIKES_DATA, HISTORY_DATA } from "../Constants/ActionsConstants";
+import { LIKES_DATA, HISTORY_DATA, WATCH_LATER_DATA } from "../Constants/ActionsConstants";
 
 const ActionsReducer = (state, action) => {
   switch (action.type) {
@@ -7,6 +7,9 @@ const ActionsReducer = (state, action) => {
     }
     case HISTORY_DATA: {
       return { ...state, historyData: action.payload };
+    }
+    case WATCH_LATER_DATA: {
+      return { ...state, watchLaterData: action.payload };
     }
     default:
       return state;
