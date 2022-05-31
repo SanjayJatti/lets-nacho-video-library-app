@@ -1,0 +1,4 @@
+const LIKES_DATA = "LIKES_DATA";
+const HISTORY_DATA = "HISTORY_DATA";
+
+export { LIKES_DATA, HISTORY_DATA };

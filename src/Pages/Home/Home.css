@@ -1,9 +1,6 @@
 .main-page {
-  position: relative;
-  top: 11vh;
-  left: 11vw;
   padding: 1rem 4rem;
-  width: 89vw;
+  flex-basis: 89vw;
 }
 .videos-wrapper {
   display: flex;

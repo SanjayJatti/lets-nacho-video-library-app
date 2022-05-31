@@ -1,23 +1,47 @@
 import "./HorizontalCard.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
+import { useActions } from "../../Contexts/ActionsContext";
+import {
+  addToLikedVideo,
+  removeFromLikedVideo,
+} from "../../Services/LikeVideoServices";
+import { removeFromHistory } from "../../Services/HistoryServices";
 
 const HorizontalCard = ({ video }) => {
   const { _id, title, channel } = video;
   const navigate = useNavigate();
+  const { actionsState, actionsDispatch } = useActions();
+  const { likesData } = actionsState;
+  const { authState } = useAuth();
+  const { token } = authState;
+  const { pathname } = useLocation()
   return (
-    <div className="Horizontal-card" onClick={() => navigate(`/${_id}`)}>
+    <div className="Horizontal-card" >
+      {pathname === "/history" && <i className="fas fa-times-circle delete-btn" onClick={()=> removeFromHistory(_id, token, actionsDispatch)}></i>}
       <img
         className="Horizontal-card-img"
         src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
         alt="img"
+        onClick={() => navigate(`/${_id}`)}
       />
       <div className="video-info">
-        <h5>{title}</h5>
-        <p className="text-small">
-          {channel}
-        </p>
+        <h5 className="cursor-pointer" onClick={() => navigate(`/${_id}`)}>{title}</h5>
+        <p className="text-small cursor-pointer" onClick={() => navigate(`/${_id}`)}>{channel}</p>
         <div className="footer-actions">
-          <i className="far fa-heart"></i>
+          {likesData.find((likedVideo) => likedVideo._id === _id) ? (
+            <i
+              className="fas fa-heart"
+              onClick={() =>
+                removeFromLikedVideo(video._id, token, actionsDispatch)
+              }
+            ></i>
+          ) : (
+            <i
+              className="far fa-heart"
+              onClick={() => addToLikedVideo(video, token, actionsDispatch)}
+            ></i>
+          )}
           <i className="far fa-clock"></i>
           <i className="far fa-plus-square"></i>
         </div>

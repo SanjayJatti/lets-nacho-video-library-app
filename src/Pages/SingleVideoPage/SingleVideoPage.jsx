@@ -5,14 +5,25 @@ import ReactPlayer from "react-player/youtube";
 import axios from "axios";
 import "./SingleVideoPage.css";
 import { HorizontalCard } from "../../Components/VideoCard/HorizontalCard";
+import {
+  addToLikedVideo,
+  removeFromLikedVideo,
+} from "../../Services/LikeVideoServices";
+import { useAuth } from "../../Contexts/AuthContext";
+import { useActions } from "../../Contexts/ActionsContext";
+import { addToHistory } from "../../Services/HistoryServices";
 
 const SingleVideoPage = () => {
   const { id } = useParams();
-  console.log(id);
   const [currentVideo, setCurrentVideo] = useState("");
   const { title, channel, description } = currentVideo;
   const { videos } = useData();
 
+  const { authState } = useAuth();
+  const { token } = authState;
+
+  const { actionsState, actionsDispatch } = useActions();
+  const { likesData } = actionsState;
   useEffect(() => {
     (async () => {
       try {
@@ -36,14 +47,34 @@ const SingleVideoPage = () => {
               controls={true}
               playing={true}
               url={`http://www.youtube.com/watch?v=${id}`}
+              onStart={() => addToHistory(currentVideo, token, actionsDispatch)}
             />
           </div>
           <div className="flex-column gap-sm">
             <h4>{title}</h4>
             <div className="video-footer">
-              <h4>
-                <i className="far fa-heart"></i>Like
-              </h4>
+              {likesData.find((video) => video._id === id) ? (
+                <h4
+                  onClick={() =>
+                    removeFromLikedVideo(
+                      currentVideo._id,
+                      token,
+                      actionsDispatch
+                    )
+                  }
+                >
+                  <i className="fas fa-heart"></i>Dislike
+                </h4>
+              ) : (
+                <h4
+                  onClick={() =>
+                    addToLikedVideo(currentVideo, token, actionsDispatch)
+                  }
+                >
+                  <i className="far fa-heart"></i>Like
+                </h4>
+              )}
+
               <h4>
                 <i className="far fa-clock"></i>Watch Later
               </h4>

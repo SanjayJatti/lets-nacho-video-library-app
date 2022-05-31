@@ -1,8 +1,6 @@
 .sidebar-container {
-  position: fixed;
-  left: 0;
-  top: 14vh;
-  min-width: 10vw;
+  flex-basis: 10vw;
+  margin-top: 2rem;
 }
 .sidebar-list-wrapper {
   display: flex;
