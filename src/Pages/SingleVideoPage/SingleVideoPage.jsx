@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useData } from "../../Contexts/DataContext";
 import ReactPlayer from "react-player/youtube";
@@ -16,15 +16,18 @@ import {
   addToWatchLater,
   removeFromWatchLater,
 } from "../../Services/WatchLaterServices";
+import { PlaylistModal } from "../../Components/PlaylistModal/PlaylistModal";
 
 const SingleVideoPage = () => {
   const { id } = useParams();
+  const [ modal, setModal] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
   const { title, channel, description } = currentVideo;
   const { videos } = useData();
 
   const { authState } = useAuth();
   const { token } = authState;
+  const navigate = useNavigate();
 
   const { actionsState, actionsDispatch } = useActions();
   const { likesData, watchLaterData } = actionsState;
@@ -40,7 +43,8 @@ const SingleVideoPage = () => {
   }, [id]);
 
   return (
-    <>
+    <div>
+      {modal && <PlaylistModal video={currentVideo} setModal={setModal} />}
       <div className="single-video-page">
         <div className="video-player-container">
           <div className="react-player-container">
@@ -60,11 +64,13 @@ const SingleVideoPage = () => {
               {likesData.find((video) => video._id === id) ? (
                 <h4
                   onClick={() =>
-                    removeFromLikedVideo(
-                      currentVideo._id,
-                      token,
-                      actionsDispatch
-                    )
+                    token
+                      ? removeFromLikedVideo(
+                          currentVideo._id,
+                          token,
+                          actionsDispatch
+                        )
+                      : navigate("/login")
                   }
                 >
                   <i className="fas fa-heart"></i>Dislike
@@ -72,7 +78,9 @@ const SingleVideoPage = () => {
               ) : (
                 <h4
                   onClick={() =>
-                    addToLikedVideo(currentVideo, token, actionsDispatch)
+                    token
+                      ? addToLikedVideo(currentVideo, token, actionsDispatch)
+                      : navigate("/login")
                   }
                 >
                   <i className="far fa-heart"></i>Like
@@ -83,11 +91,13 @@ const SingleVideoPage = () => {
               ) ? (
                 <h4
                   onClick={() =>
-                    removeFromWatchLater(
-                      currentVideo._id,
-                      token,
-                      actionsDispatch
-                    )
+                    token
+                      ? removeFromWatchLater(
+                          currentVideo._id,
+                          token,
+                          actionsDispatch
+                        )
+                      : navigate("/login")
                   }
                 >
                   <i className="fas fa-clock"></i>
@@ -96,14 +106,16 @@ const SingleVideoPage = () => {
               ) : (
                 <h4
                   onClick={() =>
-                    addToWatchLater(currentVideo, token, actionsDispatch)
+                    token
+                      ? addToWatchLater(currentVideo, token, actionsDispatch)
+                      : navigate("/login")
                   }
                 >
                   <i className="far fa-clock"></i>
                   Watch Later
                 </h4>
               )}
-              <h4>
+              <h4 onClick={()=> token ? setModal(true) : navigate("/login")}>
                 <i className="far fa-plus-square"></i>Add to Playlist
               </h4>
             </div>
@@ -120,7 +132,7 @@ const SingleVideoPage = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export { SingleVideoPage };
