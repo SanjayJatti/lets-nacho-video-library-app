@@ -1,7 +1,19 @@
-import React from 'react'
+import { useActions } from "../../Contexts/ActionsContext";
+import { PlaylistCard } from "../../Components/PlaylistCard/PlaylistCard";
 
-export const Playlist = () => {
+const Playlist = () => {
+  const { actionsState } = useActions();
+  const { playlistData } = actionsState;
   return (
-    <div>Playlist</div>
-  )
-}
+    <div className="main-page flex-row gap-xl">
+      {playlistData.length !== 0 ? (
+        playlistData.map((playlist) => (
+          <PlaylistCard key={playlist._id} playlist={playlist} />
+        ))
+      ) : (
+        <h3>You can create playlist and add videos in that</h3>
+      )}
+    </div>
+  );
+};
+export { Playlist };

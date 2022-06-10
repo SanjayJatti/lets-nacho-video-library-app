@@ -3,6 +3,8 @@ import { ActionsReducer } from "../Reducer/ActionsReducer";
 import { getLikedVideos } from "../Services/LikeVideoServices";
 import { getHistory } from "../Services/HistoryServices";
 import { useAuth } from "./AuthContext";
+import { getWatchLaterVideos } from "../Services/WatchLaterServices";
+import { getPlaylistByID, getPlaylistData } from "../Services/PlaylistServices";
 
 const actionsContext = createContext();
 
@@ -13,6 +15,7 @@ function ActionsProvider({ children }) {
     likesData: [],
     historyData: [],
     watchLaterData: [],
+    playlistData: [],
     error: "",
   };
   const [actionsState, actionsDispatch] = useReducer(
@@ -23,6 +26,9 @@ function ActionsProvider({ children }) {
     if (token) {
       getLikedVideos(actionsDispatch, token);
       getHistory(actionsDispatch, token);
+      getWatchLaterVideos(actionsDispatch, token);
+      getPlaylistData(actionsDispatch,token);
+      getPlaylistByID (actionsDispatch, token)
     }
   }, [token]);
   return (
