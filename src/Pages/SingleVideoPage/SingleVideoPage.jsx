@@ -116,7 +116,7 @@ const SingleVideoPage = () => {
                 </h4>
               )}
               <h4 onClick={()=> token ? setModal(true) : navigate("/login")}>
-                <i className="far fa-plus-square"></i>Add to Playlist
+                <i className="far fa-plus-square"></i> Add to Playlist
               </h4>
             </div>
             <h4>
