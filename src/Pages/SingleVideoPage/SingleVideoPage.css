@@ -1,12 +1,10 @@
 .single-video-page {
   padding: 1rem 2rem;
-  flex-basis: 89vw;
   display: flex;
   gap: 2rem;
-  position: relative;
+  position: absolute;
   top: 10vh;
   left: 9vw;
-  height: 150vh;
 }
 .video-player-container {
   flex-basis: 68%;  
