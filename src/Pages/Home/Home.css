@@ -1,8 +1,6 @@
 .main-page {
   padding: 1rem 4rem;
-  flex-basis: 89vw;
-  height: 150vh;
-  position: relative;
+  position: absolute ;
   top: 10vh;
   left: 9vw;
 }

@@ -1,11 +1,10 @@
 .feature-page{
     display: flex;
     gap: var(--scale-xl);
-    position: relative;
+    position: absolute;
     top: 12vh;
     left: 10vw;
     padding: var(--scale-sm);
-    height: 150vh;
 }
 .thumbnail-img{
     width: 50vw;

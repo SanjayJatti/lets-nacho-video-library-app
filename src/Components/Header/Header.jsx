@@ -76,7 +76,11 @@ const Header = () => {
             </NavLink>
           </div>
         )}
-        <h2 className="margin-l-xl">Let's <span className="text-primary font-inherit">Nacho</span></h2>
+        <Link to="/" className="text-secondary cursor-pointer">
+          <h2 className="margin-l-xl">
+            Let's <span className="text-primary font-inherit">Nacho</span>
+          </h2>
+        </Link>
         {!token ? (
           <Link to="/login" className="nav-link margin-r-lg">
             <button className="btn btn-primary">LogIn</button>
