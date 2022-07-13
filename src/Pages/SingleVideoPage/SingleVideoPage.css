@@ -1,17 +1,20 @@
 .single-video-page {
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   flex-basis: 89vw;
   display: flex;
-  width: 100%;
   gap: 2rem;
+  position: relative;
+  top: 10vh;
+  left: 9vw;
+  height: 150vh;
 }
 .video-player-container {
-  flex-basis: 64%;
+  flex-basis: 68%;  
 }
 .recommendation-list {
   display: flex;
   flex-direction: column;
-  flex-basis: 36%;
+  flex-basis: 32%;
   gap: 1rem;
 }
 .react-player-container {
@@ -32,4 +35,28 @@
 .video-footer h4 i {
   font-size: inherit;
   margin-right: 0.5rem;
+}
+
+@media only screen and (max-width: 1435px){
+  .single-video-page{
+    flex-direction: column;
+    padding: var(--scale-sm) var(--scale-xxl);
+    left: 0;
+  }
+  .react-player-container{
+     width: 100%;
+  }
+  .recommendation-list{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--scale-lg)
+  }
+}
+@media only screen and (max-width: 975px){
+  .single-video-page{
+    padding: var(--scale-sm);
+  }
+  .recommendation-list{
+    justify-content: center;
+  }
 }

@@ -73,7 +73,7 @@ const SingleVideoPage = () => {
                       : navigate("/login")
                   }
                 >
-                  <i className="fas fa-heart"></i>Dislike
+                  <i className="fas fa-heart text-danger"></i>Dislike
                 </h4>
               ) : (
                 <h4
@@ -121,9 +121,9 @@ const SingleVideoPage = () => {
             </div>
             <h4>
               {channel}
-              <i className="fas fa-check-circle font-inherit margin-l-xs"></i>
+              <i className="fas fa-check-circle font-inherit margin-l-xs text-success"></i>
             </h4>
-            <p>{description}</p>
+            <p className="text-wrap">{description}</p>
           </div>
         </div>
         <div className="recommendation-list">

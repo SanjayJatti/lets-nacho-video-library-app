@@ -53,7 +53,7 @@ const HorizontalCard = ({ video }) => {
           <div className="footer-actions">
             {likesData.find((likedVideo) => likedVideo._id === _id) ? (
               <i
-                className="fas fa-heart"
+                className="fas fa-heart text-danger"
                 onClick={() =>
                   token
                     ? removeFromLikedVideo(video._id, token, actionsDispatch)

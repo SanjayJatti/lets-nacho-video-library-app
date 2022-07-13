@@ -9,7 +9,7 @@ const WatchLater = () => {
       ? watchLaterData[watchLaterData.length - 1]._id
       : "";
   return (
-    <div className="main-page flex-row gap-xl">
+    <div className="feature-page">
       {watchLaterData.length !== 0 && (
         <div>
           <img

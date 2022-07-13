@@ -8,7 +8,7 @@ const LikedVideos = () => {
   const latestVideoId =
     likesData.length > 0 ? likesData[likesData.length - 1]._id : "";
   return (
-    <div className="main-page flex-row gap-xl">
+    <div className="feature-page">
       {likesData.length !== 0 && (
         <div>
           <img

@@ -1,6 +1,8 @@
 .sidebar-container {
-  flex-basis: 10vw;
   margin-top: 2rem;
+  position: fixed;
+  top:10vh;
+  left: var(--scale-xs);
 }
 .sidebar-list-wrapper {
   display: flex;
@@ -19,4 +21,14 @@
   font-size: inherit;
   display: flex;
   flex-direction: column;
+}
+.active{
+  border: none;
+  color: var(--primary-color);
+}
+@media only screen and (max-width: 1435px) {
+  .sidebar-container {
+    display: none;
+    left: 0;
+  }
 }

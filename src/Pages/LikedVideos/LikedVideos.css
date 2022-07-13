@@ -1,6 +1,30 @@
+.feature-page{
+    display: flex;
+    gap: var(--scale-xl);
+    position: relative;
+    top: 12vh;
+    left: 10vw;
+    padding: var(--scale-sm);
+    height: 150vh;
+}
 .thumbnail-img{
-    width: 40vw;
+    width: 50vw;
     height: auto;
     object-fit: cover;
     aspect-ratio: 16 / 9;
+}
+@media only screen and (max-width:1435px){
+    .feature-page{
+        left:0;
+        padding: var(--scale-lg);
+    }
+
+}
+@media only screen and (max-width:950px){
+    .feature-page{
+        flex-direction: column;
+    }
+    .thumbnail-img{
+        width: 100%;
+    }
 }

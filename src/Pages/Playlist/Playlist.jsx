@@ -5,7 +5,7 @@ const Playlist = () => {
   const { actionsState } = useActions();
   const { playlistData } = actionsState;
   return (
-    <div className="main-page flex-row gap-xl">
+    <div className="feature-page">
       {playlistData.length !== 0 ? (
         playlistData.map((playlist) => (
           <PlaylistCard key={playlist._id} playlist={playlist} />

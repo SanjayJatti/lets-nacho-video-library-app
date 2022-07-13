@@ -1,6 +1,10 @@
 .main-page {
   padding: 1rem 4rem;
   flex-basis: 89vw;
+  height: 150vh;
+  position: relative;
+  top: 10vh;
+  left: 9vw;
 }
 .videos-wrapper {
   display: flex;
@@ -22,4 +26,16 @@
 }
 .active-chip{
     background-color: var(--light-primary-color);
+}
+
+@media only screen and (max-width: 1435px) {
+  .videos-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-page{
+    left: 0;
+    padding: var(--scale-sm);
+  }
 }

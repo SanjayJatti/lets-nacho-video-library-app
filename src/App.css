@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
- html{
-    font-family: 'Montserrat', sans-serif;
- }
- .page-container{
-    width: 100%;
-    overflow: hidden;
- }
- .core-page{
-    display: flex;
- }
+html {
+  font-family: "Montserrat", sans-serif;
+}
+.page-container {
+  width: 100%;
+  overflow: hidden;
+}
+.core-page {
+  display: flex;
+}

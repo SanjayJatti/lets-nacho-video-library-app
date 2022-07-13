@@ -11,7 +11,7 @@ const History = () => {
   const latestVideoId =
     historyData.length > 0 ? historyData[historyData.length - 1]._id : "";
   return (
-    <div className="main-page flex-row gap-xl">
+    <div className="feature-page">
       {historyData.length == 0 && <h3>History is empty</h3>}
       {historyData.length !== 0 && (
         <div>
