@@ -1,5 +1,7 @@
 import axios from "axios";
 import { LIKES_DATA } from "../Constants/ActionsConstants";
+import toast from 'react-hot-toast';
+import { ToastStyle } from "../Components/ToastStyle/ToastStyle"
 
 const getLikedVideos = async (token, actionsDispatch) => {
   try {
@@ -10,7 +12,7 @@ const getLikedVideos = async (token, actionsDispatch) => {
     });
     actionsDispatch({ type: LIKES_DATA, payload: response.data.likes });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -26,8 +28,9 @@ const addToLikedVideo = async (video, token, actionsDispatch) => {
       }
     );
     actionsDispatch({ type: LIKES_DATA, payload: response.data.likes });
+    toast.success("Added to the liked videos", ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error(" Failed to add to the liked videos", ToastStyle)
   }
 };
 
@@ -39,8 +42,9 @@ const removeFromLikedVideo = async (id, token, actionsDispatch) => {
       },
     });
     actionsDispatch({ type: LIKES_DATA, payload: response.data.likes });
+    toast.success("Removed from the liked videos", ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error(" Failed to remove from the liked videos", ToastStyle)
   }
 };
 

@@ -1,5 +1,7 @@
 import axios from "axios";
 import { WATCH_LATER_DATA } from "../Constants/ActionsConstants";
+import toast from "react-hot-toast";
+import { ToastStyle } from "../Components/ToastStyle/ToastStyle";
 
 const getWatchLaterVideos = async (token, actionsDispatch) => {
   try {
@@ -13,7 +15,7 @@ const getWatchLaterVideos = async (token, actionsDispatch) => {
       payload: response.data.watchlater,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -32,8 +34,9 @@ const addToWatchLater = async (video, token, actionsDispatch) => {
       type: WATCH_LATER_DATA,
       payload: response.data.watchlater,
     });
+    toast.success("Added to watch later",ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error("failed to add to watch later",ToastStyle)
   }
 };
 
@@ -48,8 +51,9 @@ const removeFromWatchLater = async (id, token, actionsDispatch) => {
       type: WATCH_LATER_DATA,
       payload: response.data.watchlater,
     });
+    toast.success("Removed from watch later",ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error("Failed to remove from watch later")
   }
 };
 

@@ -1,5 +1,8 @@
 import axios from "axios";
 import { PLAYLIST_DATA, SINGLE_PLAYLIST } from "../Constants/ActionsConstants";
+import toast from "react-hot-toast";
+import { ToastStyle } from "../Components/ToastStyle/ToastStyle";
+
 
 const getPlaylistData = async (token, actionsDispatch) => {
   try {
@@ -13,7 +16,7 @@ const getPlaylistData = async (token, actionsDispatch) => {
       payload: response.data.playlists,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -34,8 +37,9 @@ const createNewPlaylist = async (newPlaylist, token, actionsDispatch) => {
       type: PLAYLIST_DATA,
       payload: response.data.playlists,
     });
+    toast.success("Created a new playlist", ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error(" Failed to create a new playlist", ToastStyle)
   }
 };
 
@@ -50,8 +54,9 @@ const deletePlaylist = async (id, token, actionsDispatch) => {
       type: PLAYLIST_DATA,
       payload: response.data.playlists,
     });
+    toast.success("Playlist is deleted", ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error(" Failed to delete the playlist", ToastStyle)
   }
 };
 
@@ -86,13 +91,13 @@ const addVideoInPlaylist = async (
         },
       }
     );
-
     actionsDispatch({
       type: SINGLE_PLAYLIST,
       payload: response.data.playlist
     });
+    toast.success("Video added to the playlist",ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error(" Unable to add to the playlist", ToastStyle)
   }
 };
 
@@ -117,8 +122,9 @@ const deletePlaylistVideo = async (
       type: SINGLE_PLAYLIST,
       payload: response.data.playlist
     });
+    toast.success("Removed from the playlist", ToastStyle)
   } catch (error) {
-    console.log(error);
+    toast.error("Failed to remove from the playlist",ToastStyle)
   }
 };
 
