@@ -19,11 +19,11 @@
   font-size: 1.6rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 .active-chip{
-    background-color: var(--light-primary-color);
+    background-color: var(--light-secondary-color);
 }
 
 @media only screen and (max-width: 1435px) {

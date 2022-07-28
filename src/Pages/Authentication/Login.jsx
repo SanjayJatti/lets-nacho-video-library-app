@@ -9,6 +9,8 @@ import {
   AUTH_ERROR,
 } from "../../Constants/AuthConstants";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { ToastStyle } from "../../Components/ToastStyle/ToastStyle"
 
 const Login = () => {
   const { authState, authDispatch } = useAuth();
@@ -29,12 +31,13 @@ const Login = () => {
         payload: response.data.encodedToken,
       });
       navigate("/");
+      toast.success("Logged in successfully",ToastStyle)
     } catch (error) {
-      console.log(error);
       authDispatch({
         type: AUTH_ERROR,
         payload: "Invalid email or password",
       });
+      toast.error("Failed to log in",ToastStyle)
     }
   };
   return (
@@ -44,7 +47,7 @@ const Login = () => {
           className="form-container"
           onSubmit={(e) => logInHandler(e, email, password)}
         >
-          <h1 className="form-title text-primary">Log In</h1>
+          <h1 className="form-title">Log In</h1>
           <div className="input-container">
             <label htmlFor="email">Email*</label>
             <input

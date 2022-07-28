@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   USER_FIRST_NAME,
@@ -12,6 +11,7 @@ import {
 import { useAuth } from "../../Contexts/AuthContext";
 import axios from "axios";
 import "./Auth.css";
+import toast from "react-hot-toast"
 
 export const Signup = () => {
   const { authState, authDispatch } = useAuth();
@@ -35,19 +35,20 @@ export const Signup = () => {
         payload: response.data.encodedToken,
       });
       navigate("/login");
+      toast.success("Signed up successfully",ToastStyle)
     } catch (error) {
-      console.log(error);
       authDispatch({
         type: AUTH_ERROR,
         payload: "Sign up failed",
       });
+      toast.error("Failed to sign up", ToastStyle)
     }
   };
   return (
     <>
       <div className="auth-page">
         <form className="form-container" onSubmit={(e) => signUpHandler(e)}>
-          <h1 className="form-title text-primary">Sign Up</h1>
+          <h1 className="form-title">Sign Up</h1>
           <div className="input-container">
             <label htmlFor="firstname">First Name*</label>
             <input

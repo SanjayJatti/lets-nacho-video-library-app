@@ -1,7 +1,9 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { AUTH_TOKEN } from "../../Constants/AuthConstants";
 import { useAuth } from "../../Contexts/AuthContext";
+import { ToastStyle } from "../ToastStyle/ToastStyle";
 import "./Header.css";
 const Header = () => {
   const [slider, setSlider] = useState(false);
@@ -16,6 +18,7 @@ const Header = () => {
       payload: null,
     });
     navigate("/");
+    toast.success("Logged out", ToastStyle)
   };
   return (
     <>
