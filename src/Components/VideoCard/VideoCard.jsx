@@ -18,7 +18,7 @@ const VideoCard = ({ video }) => {
   const { _id, title, channel } = video;
   const navigate = useNavigate();
   const { actionsState, actionsDispatch } = useActions();
-  const { likesData, watchLaterData, playlistModal } = actionsState;
+  const { likesData, watchLaterData } = actionsState;
   const { authState } = useAuth();
   const { token } = authState;
   return (
@@ -33,7 +33,6 @@ const VideoCard = ({ video }) => {
           />
           <h4>{title}</h4>
         </div>
-
         <div className="card-footer">
           <p className="text-small">
             {channel} <i className="fas fa-check-circle font-inherit"></i>

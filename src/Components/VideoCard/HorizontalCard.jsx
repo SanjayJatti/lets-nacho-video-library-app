@@ -20,7 +20,7 @@ const HorizontalCard = ({ video }) => {
   const { _id, title, channel } = video;
   const navigate = useNavigate();
   const { actionsState, actionsDispatch } = useActions();
-  const { likesData, watchLaterData, playlistModal } = actionsState;
+  const { likesData, watchLaterData } = actionsState;
   const { authState } = useAuth();
   const { token } = authState;
   const { pathname } = useLocation();

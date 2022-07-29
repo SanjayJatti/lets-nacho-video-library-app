@@ -16,7 +16,6 @@ function ActionsProvider({ children }) {
     historyData: [],
     watchLaterData: [],
     playlistData: [],
-    error: "",
   };
   const [actionsState, actionsDispatch] = useReducer(
     ActionsReducer,

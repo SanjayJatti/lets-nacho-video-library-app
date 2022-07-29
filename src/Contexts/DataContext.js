@@ -13,7 +13,7 @@ const DataProvider = ({ children }) => {
         const response = await axios.get("/api/videos");
         setVideos(response.data.videos);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     getVideos();
@@ -23,7 +23,7 @@ const DataProvider = ({ children }) => {
         const response = await axios.get("/api/categories");
         setCategories(response.data.categories);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     getCategories();
