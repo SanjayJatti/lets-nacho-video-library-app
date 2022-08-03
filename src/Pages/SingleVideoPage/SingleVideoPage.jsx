@@ -22,7 +22,7 @@ const SingleVideoPage = () => {
   const { id } = useParams();
   const [ modal, setModal] = useState(false);
   const [currentVideo, setCurrentVideo] = useState("");
-  const { title, channel, description } = currentVideo;
+  const { title, channel, description,views } = currentVideo;
   const { videos } = useData();
 
   const { authState } = useAuth();
@@ -60,6 +60,7 @@ const SingleVideoPage = () => {
           </div>
           <div className="flex-column gap-sm">
             <h4>{title}</h4>
+            <h5>{views} views</h5>
             <div className="video-footer">
               {likesData.find((video) => video._id === id) ? (
                 <h4

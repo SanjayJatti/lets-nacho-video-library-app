@@ -1,23 +1,22 @@
 .single-video-page {
-  padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
+  flex-direction: column;
   position: absolute;
   top: 10vh;
   left: 9vw;
-}
-.video-player-container {
-  flex-basis: 68%;  
+  padding: var(--scale-sm) var(--scale-xxl);
 }
 .recommendation-list {
   display: flex;
-  flex-direction: column;
-  flex-basis: 32%;
-  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--scale-xl)
 }
 .react-player-container {
-  margin-bottom: 1rem;
+  margin-bottom: var(--scale-lg);
   aspect-ratio: 16/9;
+  width: 100%;
 }
 
 .video-footer {
@@ -37,17 +36,7 @@
 
 @media only screen and (max-width: 1435px){
   .single-video-page{
-    flex-direction: column;
-    padding: var(--scale-sm) var(--scale-xxl);
     left: 0;
-  }
-  .react-player-container{
-     width: 100%;
-  }
-  .recommendation-list{
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--scale-lg)
   }
 }
 @media only screen and (max-width: 975px){

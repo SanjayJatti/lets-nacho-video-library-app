@@ -8,10 +8,12 @@
     object-fit: cover;
     width: 30rem;
     border-radius: var(--scale-xxs);
+    margin-bottom: var(--scale-xs);
 }
 .card-footer{
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
 .footer-actions{
     display: flex;
@@ -25,5 +27,7 @@
 .footer-actions i:hover{
     background-color: #e9ecef;
     border-radius: 50%;
-  
+}
+.text-small{
+    font-size: 1.2rem;
 }
