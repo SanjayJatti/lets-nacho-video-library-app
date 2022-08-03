@@ -23,12 +23,11 @@ const PlaylistCard = ({ playlist }) => {
         />
       </Link>
       <div className="playlistCard-footer">
-        <h2>{playlist.title}</h2>
-        <h4
+        <h4>{playlist.title}</h4>
+        <i
+          className="fas fa-trash-alt text-danger cursor-pointer"
           onClick={() => deletePlaylist(playlist._id, token, actionsDispatch)}
-        >
-          <i className="fas fa-trash-alt"></i> Delete Playlist
-        </h4>
+        ></i>
       </div>
     </div>
   );

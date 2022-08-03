@@ -5,6 +5,7 @@ import { AUTH_TOKEN } from "../../Constants/AuthConstants";
 import { useAuth } from "../../Contexts/AuthContext";
 import { ToastStyle } from "../ToastStyle/ToastStyle";
 import "./Header.css";
+
 const Header = () => {
   const [slider, setSlider] = useState(false);
   const { authState, authDispatch } = useAuth();

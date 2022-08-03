@@ -17,12 +17,11 @@
 }
 .mobile-navigation {
   height: 100vh;
-  width: 70%;
+  width: 20%;
   position: absolute;
   z-index: var(--z-index-xxl);
   top: 10vh;
   left: 0;
-  opacity: 0.9;
   background-color: var(--secondary-color);
   overflow-y: auto;
   transition: 0.5s;
@@ -53,4 +52,10 @@
   .hamburger {
     display: block;
   }
+}
+@media only screen and (max-width: 1080px) {
+  .mobile-navigation{
+    width: 70%;
+  }
+
 }

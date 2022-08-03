@@ -5,7 +5,7 @@
   position: absolute;
   top: 10vh;
   left: 9vw;
-  padding: var(--scale-sm) var(--scale-xxl);
+  padding: 0 var(--scale-xxl) var(--scale-xxl) var(--scale-xxl) ;
 }
 .recommendation-list {
   display: flex;
@@ -14,11 +14,10 @@
   gap: var(--scale-xl)
 }
 .react-player-container {
-  margin-bottom: var(--scale-lg);
+  margin-bottom: var(--scale-sm);
   aspect-ratio: 16/9;
-  width: 100%;
+  width: 92%;
 }
-
 .video-footer {
   display: flex;
   gap: 1.5rem;
@@ -38,6 +37,10 @@
   .single-video-page{
     left: 0;
   }
+  .react-player-container {
+    width: 100%;
+  }
+  
 }
 @media only screen and (max-width: 975px){
   .single-video-page{

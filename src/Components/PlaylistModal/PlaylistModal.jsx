@@ -18,7 +18,7 @@ const PlaylistModal = ({ video, setModal }) => {
 
   const { actionsState, actionsDispatch } = useActions();
   const { playlistData } = actionsState;
- 
+
   return (
     <div className="playlistModal">
       <div className="playlistModal-main">
@@ -57,7 +57,9 @@ const PlaylistModal = ({ video, setModal }) => {
                         )
                   }
                 />
-                <label htmlFor={playlist._id} className="cursor-pointer">{playlist.title}</label>
+                <label htmlFor={playlist._id} className="cursor-pointer">
+                  {playlist.title}
+                </label>
               </div>
             ))}
         </div>

@@ -1,12 +1,17 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useActions } from "../../Contexts/ActionsContext";
+import { useAuth } from "../../Contexts/AuthContext";
+import { deletePlaylist } from "../../Services/PlaylistServices";
 import { HorizontalCard } from "../VideoCard/HorizontalCard";
 
 const PlaylistFile = () => {
-  const { actionsState } = useActions();
+  const { actionsState, actionsDispatch } = useActions();
   const { playlistData } = actionsState;
   const { playlistId } = useParams();
-  
+  const { authState } = useAuth();
+  const { token } = authState;
+  const navigate = useNavigate();
+
   const singlePlaylist = playlistData.find((item) => item._id === playlistId);
 
   const latestVideoId =
@@ -27,6 +32,15 @@ const PlaylistFile = () => {
           <h3>{singlePlaylist.title}</h3>
           <p>{singlePlaylist.description}</p>
           <h4>{singlePlaylist.videos.length} videos</h4>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              deletePlaylist(playlistId, token, actionsDispatch);
+              navigate("/playlist/");
+            }}
+          >
+            Delete Playlist
+          </button>
         </div>
       )}
       <div className="flex-column gap-md">

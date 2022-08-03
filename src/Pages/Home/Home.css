@@ -23,7 +23,8 @@
   border-color: var(--secondary-color);
 }
 .active-chip{
-    background-color: var(--light-secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--white)
 }
 
 @media only screen and (max-width: 1435px) {

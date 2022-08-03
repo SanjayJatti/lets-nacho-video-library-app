@@ -13,10 +13,10 @@ import {
   removeFromWatchLater,
 } from "../../Services/WatchLaterServices";
 import { PlaylistModal } from "../PlaylistModal/PlaylistModal";
-
+import { deletePlaylistVideo } from "../../Services/PlaylistServices";
 
 const HorizontalCard = ({ video }) => {
-  const [ modal, setModal ] = useState(false)
+  const [modal, setModal] = useState(false);
   const { _id, title, channel } = video;
   const navigate = useNavigate();
   const { actionsState, actionsDispatch } = useActions();
@@ -93,11 +93,7 @@ const HorizontalCard = ({ video }) => {
             )}
             <i
               className="far fa-plus-square"
-              onClick={() =>
-                token
-                  ? setModal(true)
-                  : navigate("/login")
-              }
+              onClick={() => (token ? setModal(true) : navigate("/login"))}
             ></i>
           </div>
         </div>
