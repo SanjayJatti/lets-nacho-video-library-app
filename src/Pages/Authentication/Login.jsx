@@ -2,15 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { useAuth } from "../../Contexts/AuthContext";
-import {
-  AUTH_TOKEN,
-  USER_EMAIL,
-  USER_PASSWORD,
-  AUTH_ERROR,
-} from "../../Constants/AuthConstants";
-import axios from "axios";
-import toast from "react-hot-toast";
-import { ToastStyle } from "../../Components/ToastStyle/ToastStyle"
+import { USER_EMAIL, USER_PASSWORD } from "../../Constants/AuthConstants";
+import { logInHandler } from "../../Services/AuthServices";
 
 const Login = () => {
   const { authState, authDispatch } = useAuth();
@@ -18,35 +11,18 @@ const Login = () => {
   const { email, password } = authState.userInfo;
   const navigate = useNavigate();
 
-  const logInHandler = async (e, emailId, userPassword) => {
+  const logInSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`/api/auth/login`, {
-        email: emailId,
-        password: userPassword,
-      });
-      localStorage.setItem("token", response.data.encodedToken);
-      authDispatch({
-        type: AUTH_TOKEN,
-        payload: response.data.encodedToken,
-      });
-      navigate("/");
-      toast.success("Logged in successfully",ToastStyle)
-    } catch (error) {
-      authDispatch({
-        type: AUTH_ERROR,
-        payload: "Invalid email or password",
-      });
-      toast.error("Failed to log in",ToastStyle)
-    }
+    logInHandler(email, password, authDispatch, navigate);
+  };
+  const guestLoginHandler = (e) => {
+    e.preventDefault();
+    logInHandler("sanjayjatti@gmail.com", "sanjay123", authDispatch, navigate);
   };
   return (
     <>
       <div className="auth-page">
-        <form
-          className="form-container"
-          onSubmit={(e) => logInHandler(e, email, password)}
-        >
+        <form className="form-container" onSubmit={(e) => logInSubmit(e)}>
           <h1 className="form-title">Log In</h1>
           <div className="input-container">
             <label htmlFor="email">Email*</label>
@@ -79,9 +55,7 @@ const Login = () => {
             </button>
             <button
               className="btn btn-secondary btn-long"
-              onClick={(e) =>
-                logInHandler(e, "sanjayjatti@gmail.com", "sanjay123")
-              }
+              onClick={(e) => guestLoginHandler(e)}
             >
               Guest Log In
             </button>

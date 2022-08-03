@@ -1,9 +1,7 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { AUTH_TOKEN } from "../../Constants/AuthConstants";
 import { useAuth } from "../../Contexts/AuthContext";
-import { ToastStyle } from "../ToastStyle/ToastStyle";
+import { logOutHandler } from "../../Services/AuthServices";
 import "./Header.css";
 
 const Header = () => {
@@ -12,15 +10,6 @@ const Header = () => {
   const { token } = authState;
   const navigate = useNavigate();
 
-  const logOutHandler = () => {
-    localStorage.removeItem("token");
-    authDispatch({
-      type: AUTH_TOKEN,
-      payload: null,
-    });
-    navigate("/");
-    toast.success("Logged out", ToastStyle)
-  };
   return (
     <>
       <div className="navbar-container">
@@ -92,7 +81,7 @@ const Header = () => {
         ) : (
           <button
             className="btn btn-primary margin-r-xl"
-            onClick={logOutHandler}
+            onClick={()=>logOutHandler(authDispatch,navigate)}
           >
             Logout
           </button>
