@@ -1,31 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
-html {
-  font-family: "Montserrat", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Montserrat:wght@900&family=Poppins:ital@0;1&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
 }
-
-element.style {
+:root {
+  --primary-color: #e01e37;
+  --dark-primary-color: #b21e35;
 }
 .card-img {
     object-fit: cover;
     width: 30rem;
     border-radius: var(--scale-xxs);
 }
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 62.5%;
-}
 .video-card {
     width: 30rem;
     cursor: pointer;
-    height: -moz-fit-content;
     height: fit-content;
-}
-
-:root {
-    --primary-color: #e01e37;
-    --dark-primary-color: #b21e35;
 }
 .page-container {
   width: 100%;
@@ -33,4 +27,7 @@ element.style {
 }
 .core-page {
   display: flex;
+}
+.btn{
+  font-family: 'Poppins', sans-serif;
 }
