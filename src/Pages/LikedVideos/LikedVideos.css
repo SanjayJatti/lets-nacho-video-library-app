@@ -5,6 +5,7 @@
     top: 12vh;
     left: 10vw;
     padding: var(--scale-sm);
+    color: var(--text-color);
 }
 .thumbnail-img{
     width: 50vw;

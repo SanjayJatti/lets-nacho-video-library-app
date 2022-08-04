@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--white);
+  background-color: var(--background-color);
   height: 7vh;
   z-index: var(--z-index-xl);
   display: flex;
@@ -11,6 +11,8 @@
 }
 .hamburger {
   display: none;
+  color: var(--text-color);
+  margin-left: var(--scale-sm);
 }
 .hamburger i {
   font-size: 2.5rem;
@@ -22,7 +24,7 @@
   z-index: var(--z-index-xxl);
   top: 10vh;
   left: 0;
-  background-color: var(--secondary-color);
+  background-color: var(--background-color-v2);
   overflow-y: auto;
   transition: 0.5s;
   height: 90vh;
@@ -47,6 +49,24 @@
   display: flex;
   justify-content: space-between;
 }
+.theme {
+  font-size: 2rem;
+}
+.text-white {
+  color: var(--text-color);
+}
+.nav-title {
+  color: var(--text-color);
+}
+.toggle-light {
+  transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+  transform: rotate(50deg);
+}
+
+.toggle-dark {
+  transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+  transform: rotate(0deg);
+}
 /* media queries for medium and small screens */
 @media only screen and (max-width: 1435px) {
   .hamburger {
@@ -54,8 +74,15 @@
   }
 }
 @media only screen and (max-width: 1080px) {
-  .mobile-navigation{
+  .mobile-navigation {
     width: 70%;
   }
-
+}
+@media only screen and (max-width: 450px) {
+  .hamburger {
+    margin-left: 0;
+  }
+  .nav-title h2 {
+    font-size: 2rem;
+  }
 }

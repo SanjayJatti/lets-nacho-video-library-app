@@ -32,7 +32,7 @@ export const Signup = () => {
         )
       : toast.error("Passwords must be same", ToastStyle);
   };
-  const guestSignupHandler=(e)=>{
+  const guestSignupHandler = (e) => {
     e.preventDefault();
     signUpHandler(
       "Sanjay",
@@ -42,8 +42,8 @@ export const Signup = () => {
       "sanjay123",
       authDispatch,
       navigate
-    )
-  }
+    );
+  };
   return (
     <>
       <div className="auth-page">
@@ -116,15 +116,18 @@ export const Signup = () => {
           <button type="submit" className="btn btn-primary btn-long">
             Create New Account
           </button>
-          <button className="btn btn-secondary btn-long" onClick={(e)=>guestSignupHandler(e)}>Guest Signup</button>
-          <p className="text-medium">
-            Have an account?
-            <span>
-              <Link to="/login" className="text-medium text-primary">
-                LogIn
-              </Link>
-            </span>
-          </p>
+          <button
+            className="btn btn-secondary btn-long"
+            onClick={(e) => guestSignupHandler(e)}
+          >
+            Guest Signup
+          </button>
+          <div className="flex-center gap-sm">
+            <p className="text-medium">Have an account?</p>
+            <Link to="/login" className="text-medium text-primary">
+              LogIn
+            </Link>
+          </div>
         </form>
       </div>
     </>

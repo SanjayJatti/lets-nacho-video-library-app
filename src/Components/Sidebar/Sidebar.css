@@ -3,6 +3,7 @@
   position: fixed;
   top:10vh;
   left: var(--scale-xs);
+  background-color: var(--background-color);
 }
 .sidebar-list-wrapper {
   display: flex;
@@ -16,7 +17,7 @@
     font-size: inherit;
 }
 .sidebar-link{
-  color: var(--secondary-color);
+  color: var(--text-color);
   font-weight: 500;
   font-size: inherit;
   display: flex;

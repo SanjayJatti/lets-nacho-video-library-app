@@ -7,7 +7,6 @@ import { logInHandler } from "../../Services/AuthServices";
 
 const Login = () => {
   const { authState, authDispatch } = useAuth();
-  const { error } = authState;
   const { email, password } = authState.userInfo;
   const navigate = useNavigate();
 
@@ -60,13 +59,12 @@ const Login = () => {
               Guest Log In
             </button>
           </div>
-          <p className="text-medium">
-            Don't have an account?
+          <div className="flex-center gap-sm">
+            <p className="text-medium ">Don't have an account?</p>
             <Link to="/signup" className="text-primary text-medium">
               Create an account
             </Link>
-          </p>
-          <h4 className="error-msg">{error}</h4>
+          </div>
         </form>
       </div>
     </>

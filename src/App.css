@@ -11,6 +11,20 @@
   --primary-color: #e01e37;
   --dark-primary-color: #b21e35;
 }
+html{
+  background-color: var(--background-color);
+}
+.dark-theme{
+  --background-color: #2F2F2F;
+  --background-color-v2 :#242526;
+  --text-color: #fff;
+}
+
+.light-theme{
+  --background-color: #fff;
+  --background-color-v2 :#f6f9fc;
+  --text-color: #2F2F2F;
+} 
 .card-img {
     object-fit: cover;
     width: 30rem;
@@ -30,4 +44,7 @@
 }
 .btn{
   font-family: 'Poppins', sans-serif;
+}
+button{
+  background: none;
 }

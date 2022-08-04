@@ -2,9 +2,10 @@
   width: 30rem;
   cursor: pointer;
   height: fit-content;
-  background-color: var(--off-white);
+  background-color: var(--background-color-v2);
+  color: var(--text-color);
   border-radius: var(--scale-xs);
-  box-shadow: var(--shadow-v3);
+  box-shadow: var(--shadow);
 }
 
 .playlistCard-img {

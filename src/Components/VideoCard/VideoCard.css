@@ -2,6 +2,7 @@
     width: 30rem;
     cursor: pointer;
     height: fit-content;
+    color: var(--text-color);
 }
 
 .card-img{
@@ -25,7 +26,7 @@
     padding: 0.5rem;
 }
 .footer-actions i:hover{
-    background-color: #e9ecef;
+    background-color: var(--background-color-v2);
     border-radius: 50%;
 }
 .text-small{
