@@ -38,7 +38,7 @@
   font-size: var(--default-font-size);
   display: block;
   transition: var(--scale-xxs) s;
-  color: var(--off-white);
+  color: var(--text-color);
   letter-spacing: 1px;
 }
 .mob-navigation-link i {
