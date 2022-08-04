@@ -15,8 +15,8 @@ const App = () => {
             toastOptions={{
               style: {
                 fontSize: "2.5rem",
-                backgroundColor: "#343a40",
-                color: "white"
+                backgroundColor: "var(--text-color)",
+                color: "var(--background-color-v2",
               },
             }}
           />

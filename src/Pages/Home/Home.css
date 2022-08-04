@@ -3,6 +3,8 @@
   position: absolute ;
   top: 10vh;
   left: 9vw;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 .videos-wrapper {
   display: flex;
@@ -19,11 +21,13 @@
   font-size: 1.6rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  color: var(--text-color);
+  border-color: var(--text-color);
+  background-color: var(--background-color);
 }
 .active-chip{
-    background-color: var(--light-secondary-color);
+    background-color: var(--text-color);
+    color: var(--background-color)
 }
 
 @media only screen and (max-width: 1435px) {

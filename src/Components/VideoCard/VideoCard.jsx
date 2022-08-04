@@ -41,6 +41,7 @@ const VideoCard = ({ video }) => {
             {likesData.find((likedVideo) => likedVideo._id === _id) ? (
               <i
                 className="fas fa-heart text-danger"
+                title="Dislike"
                 onClick={() =>
                   token
                     ? removeFromLikedVideo(video._id, token, actionsDispatch)
@@ -50,6 +51,7 @@ const VideoCard = ({ video }) => {
             ) : (
               <i
                 className="far fa-heart"
+                title="Like"
                 onClick={() =>
                   token
                     ? addToLikedVideo(video, token, actionsDispatch)
@@ -62,6 +64,7 @@ const VideoCard = ({ video }) => {
             ) ? (
               <i
                 className="fas fa-clock"
+                title="Remove from watch later"
                 onClick={() =>
                   token
                     ? removeFromWatchLater(video._id, token, actionsDispatch)
@@ -71,6 +74,7 @@ const VideoCard = ({ video }) => {
             ) : (
               <i
                 className="far fa-clock"
+                title="Watch later"
                 onClick={() =>
                   token
                     ? addToWatchLater(video, token, actionsDispatch)
@@ -80,6 +84,7 @@ const VideoCard = ({ video }) => {
             )}
             <i
               className="far fa-plus-square"
+              title="Playlist"
               onClick={(e) => {
                 token ? setModal(true) : navigate("/login");
               }}

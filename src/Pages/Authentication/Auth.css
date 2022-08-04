@@ -1,6 +1,12 @@
 .form-container{
     width: 30rem;
     height: max-content;
+    background-color: var(--background-color-v2);
+    color: var(--text-color);
+}
+.input-container input{
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 .auth-page{
     display: flex;
@@ -8,7 +14,7 @@
     width: 100%;
     position: relative;
     top: 12vh;
-    height: 100vh;
+    height: 120vh;
 }
 .text-medium{
     font-size: 1.2rem;

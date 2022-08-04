@@ -2,16 +2,19 @@
     width: 30rem;
     cursor: pointer;
     height: fit-content;
+    color: var(--text-color);
 }
 
 .card-img{
     object-fit: cover;
     width: 30rem;
     border-radius: var(--scale-xxs);
+    margin-bottom: var(--scale-xs);
 }
 .card-footer{
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
 .footer-actions{
     display: flex;
@@ -23,7 +26,9 @@
     padding: 0.5rem;
 }
 .footer-actions i:hover{
-    background-color: #e9ecef;
+    background-color: var(--background-color-v2);
     border-radius: 50%;
-  
+}
+.text-small{
+    font-size: 1.2rem;
 }

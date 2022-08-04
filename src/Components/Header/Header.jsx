@@ -1,30 +1,22 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { AUTH_TOKEN } from "../../Constants/AuthConstants";
 import { useAuth } from "../../Contexts/AuthContext";
-import { ToastStyle } from "../ToastStyle/ToastStyle";
+import { useTheme } from "../../Contexts/ThemeContext";
+import { logOutHandler } from "../../Services/AuthServices";
 import "./Header.css";
+
 const Header = () => {
   const [slider, setSlider] = useState(false);
   const { authState, authDispatch } = useAuth();
   const { token } = authState;
+  const { theme, themeToggle } = useTheme();
   const navigate = useNavigate();
 
-  const logOutHandler = () => {
-    localStorage.removeItem("token");
-    authDispatch({
-      type: AUTH_TOKEN,
-      payload: null,
-    });
-    navigate("/");
-    toast.success("Logged out", ToastStyle)
-  };
   return (
     <>
       <div className="navbar-container">
         <div
-          className="hamburger cursor-pointer margin-l-sm"
+          className="hamburger cursor-pointer"
           onClick={() => setSlider(!slider)}
         >
           <i className={` ${slider ? "fas fa-times" : "fas fa-bars"}`}></i>
@@ -79,23 +71,33 @@ const Header = () => {
             </NavLink>
           </div>
         )}
-        <Link to="/" className="text-secondary cursor-pointer">
+        <Link to="/" className="nav-title cursor-pointer">
           <h2 className="margin-l-xl">
             Let's <span className="text-primary font-inherit">Nacho</span>
           </h2>
         </Link>
-        {!token ? (
-          <Link to="/login" className="nav-link margin-r-lg">
-            <button className="btn btn-primary">LogIn</button>
-          </Link>
-        ) : (
-          <button
-            className="btn btn-primary margin-r-xl"
-            onClick={logOutHandler}
-          >
-            Logout
+        <div className="flex-center gap-lg">
+          <button className="btn-icon" onClick={themeToggle}>
+            {theme === "darkTheme" ? (
+              <i className="fas fa-sun theme text-white toggle-light"></i>
+            ) : (
+              <i className="fas fa-moon theme toggle-dark"></i>
+            )}
           </button>
-        )}
+
+          {!token ? (
+            <Link to="/login" className="nav-link margin-r-lg">
+              <button className="btn btn-primary">LogIn</button>
+            </Link>
+          ) : (
+            <button
+              className="btn btn-primary margin-r-xl"
+              onClick={() => logOutHandler(authDispatch, navigate)}
+            >
+              Logout
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

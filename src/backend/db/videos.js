@@ -11,7 +11,7 @@ export const videos = [
   {
     _id: "JWhA3ldZcyY",
     category: "Classical",
-    title: "Shiva Shambho:Bharatanatyam",
+    title: "Shiva Shambho",
     description:
       "Dance adaptation of Parshwanath Upadhye's 'Shambho' in Ragam Bhatiyar & Palini and Talam Adi.Choreographed and performed by:Swathi Jaisankar,Isha Parupudi,Sophia Salingaros",
     channel: "T-Series",
@@ -83,7 +83,7 @@ export const videos = [
   {
     _id: "_lgcmYSePGA",
     category: "Hip-Hop",
-    title: "THE BOX | Matt Steffanina",
+    title: "THE BOX |Matt Steffanina",
     description:
       "Matt Steffanina is a hip hop dance choreographer, DJ and producer from Los Angeles, CA. ",
     channel: "Matt Steffanina",
@@ -92,7 +92,7 @@ export const videos = [
   {
     _id: "aTTRJECOBOM",
     category: "Hip-Hop",
-    title: "Mercy | Badshah",
+    title: "Mercy |Badshah",
     description:
       "Mercy | Badshah | Hip Hop | Naach Choreography | #DanceLikeAPro ",
     channel: "Team Naach",
@@ -101,10 +101,10 @@ export const videos = [
   {
     _id: "86DRJ_Y9prA",
     category: "Hip-Hop",
-    title: "Shape Of You | Ed Sheeran",
+    title: "Shape Of You |Ed Sheeran",
     description:
       "Shape Of You | Ed Sheeran | Hip Hop Dance Routine by Sonali & Vijetha | LiveToDance with Sonali",
-    channel: "LiveToDance with Sonali",
+    channel: "LiveToDance",
     views: 27135247,
   }
 ];

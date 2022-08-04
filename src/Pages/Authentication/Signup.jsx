@@ -5,13 +5,12 @@ import {
   USER_EMAIL,
   USER_PASSWORD,
   USER_CONFIRM_PASSWORD,
-  AUTH_TOKEN,
-  AUTH_ERROR,
 } from "../../Constants/AuthConstants";
 import { useAuth } from "../../Contexts/AuthContext";
-import axios from "axios";
 import "./Auth.css";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
+import { ToastStyle } from "../../Components/ToastStyle/ToastStyle";
+import { signUpHandler } from "../../Services/AuthServices";
 
 export const Signup = () => {
   const { authState, authDispatch } = useAuth();
@@ -19,35 +18,36 @@ export const Signup = () => {
   const { firstName, lastName, email, password, confirmPassword } = userInfo;
   const navigate = useNavigate();
 
-  const signUpHandler = async (e) => {
+  const signupSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`/api/auth/signup`, {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
-      });
-      localStorage.setItem("token", response.data.encodedToken);
-      authDispatch({
-        type: AUTH_TOKEN,
-        payload: response.data.encodedToken,
-      });
-      navigate("/login");
-      toast.success("Signed up successfully",ToastStyle)
-    } catch (error) {
-      authDispatch({
-        type: AUTH_ERROR,
-        payload: "Sign up failed",
-      });
-      toast.error("Failed to sign up", ToastStyle)
-    }
+    password === confirmPassword
+      ? signUpHandler(
+          firstName,
+          lastName,
+          email,
+          password,
+          confirmPassword,
+          authDispatch,
+          navigate
+        )
+      : toast.error("Passwords must be same", ToastStyle);
+  };
+  const guestSignupHandler = (e) => {
+    e.preventDefault();
+    signUpHandler(
+      "Sanjay",
+      "Jatti",
+      "jattisanjay.r@gmail.com",
+      "sanjay123",
+      "sanjay123",
+      authDispatch,
+      navigate
+    );
   };
   return (
     <>
       <div className="auth-page">
-        <form className="form-container" onSubmit={(e) => signUpHandler(e)}>
+        <form className="form-container" onSubmit={(e) => signupSubmit(e)}>
           <h1 className="form-title">Sign Up</h1>
           <div className="input-container">
             <label htmlFor="firstname">First Name*</label>
@@ -116,15 +116,18 @@ export const Signup = () => {
           <button type="submit" className="btn btn-primary btn-long">
             Create New Account
           </button>
-          <p className="text-medium">
-            Have an account?{" "}
-            <span>
-              <Link to="/login" className="text-medium text-primary">
-                LogIn
-              </Link>
-            </span>
-          </p>
-          <h4 className="error-msg">{error}</h4>
+          <button
+            className="btn btn-secondary btn-long"
+            onClick={(e) => guestSignupHandler(e)}
+          >
+            Guest Signup
+          </button>
+          <div className="flex-center gap-sm">
+            <p className="text-medium">Have an account?</p>
+            <Link to="/login" className="text-medium text-primary">
+              LogIn
+            </Link>
+          </div>
         </form>
       </div>
     </>
